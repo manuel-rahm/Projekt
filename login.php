@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <video src="assets/loginBackground.mp4" class="videoBackground" muted loop autoplay></video>
     <div class="login">
         <h1 class="loginTitle">Login - JvJ</h1>
         <form method="POST">

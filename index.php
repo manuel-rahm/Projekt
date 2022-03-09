@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title = "Startseite - JvJ";
 include('header.php');
 ?>
