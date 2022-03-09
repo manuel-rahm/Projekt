@@ -1,0 +1,165 @@
+/* ---Navbar--- */
+.nav{
+  display: flex;
+  background-color: #000000;
+  padding: 10px;
+  width: auto;
+}
+.nav div {
+  align-self: center;
+}
+.navLink{
+  text-decoration: none;
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 15px;
+}
+.navLink:hover{
+  color: aqua;
+  text-decoration: none;
+  transform:scale(1.07);
+}
+.nav div{
+  list-style: none;
+}
+.navTitle{
+  text-decoration: none;
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 15px;
+}
+.navTitle:hover{
+  text-decoration: none;
+  color: aqua;
+}
+.fa-bars {
+  float: right;
+  color: white;
+  align-self: center;
+}
+.fa-arrow-up {
+  color: White;
+}
+/* ---User info and log out button--- */
+.headerRight {
+  display: flex;
+  margin-left: auto;
+  margin-right: 10px;
+}
+.headerRight p {
+  color:white;
+  margin: auto 0;
+}
+.logoutButton {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.changePWButton {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.changePWButton:hover {
+    color: black;
+    text-decoration: none;
+}
+.burger {
+  display: none;
+  margin-left: 20px;
+  color: black;
+  text-decoration: none!important;
+}
+@media screen and (max-width: 650px) {
+  .burger {display: flex; color:white;}
+  .nav {justify-content: center;}
+  .navTitle {margin: 0 auto;}
+  .navLink {display: none;}
+  .headerRight {display: none; margin: 0 auto;}
+  .overviewTitle {font-size: 20px!important;}
+  h2 {font-size: 30px!important;}
+  .addUser {width: 69%!important;}
+  .uploadForm {width: 69%!important;}
+}
+@media screen and (max-width: 650px) {
+  .nav.responsive {display: flex; position: relative; flex-direction: column;}
+  .nav.responsive .burger {
+    justify-content: center;
+  }
+  .nav.responsive a {
+    display: flex;
+    align-self: center;
+  }
+  .nav.responsive .headerRight {
+    display: flex;
+  }
+}
+/* ---Index content--- */
+.column{
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+#welcomeScreen {
+  display: none;
+  position:absolute;
+  top: 0;
+  height: 100%;
+  width:100%;
+  background-color:black;
+  text-align: center;
+}
+#welcomeScreen h1 {
+  margin-top: 300px;
+  color: white;
+}
+.title {
+  text-align: center;
+	color: Black;
+	height: 50px;
+	letter-spacing: 1px;
+  margin-top: 10px;
+}
+#indexContainer {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 2px solid black;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+}
+/* ---Images for gallery overview--- */
+.overviewImg{
+  display: flex;
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.overviewImg:hover{
+  transform:scale(1.07);
+  border-radius: 5px;
+}
+.overviewTitle{
+  display: flex;
+  color: white;
+  background-color: black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  justify-content: center;
+  width: 55%;
+  margin: 0 auto ;
+}

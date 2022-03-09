@@ -18,7 +18,6 @@
         <a class="navLink" href="index.php">Home</a>
         <a class="navLink" href="galleryoverview.php">Galleries</a>
         <a class="navLink" href="videos.php">Video Gallery</a>
-        <a class="navLink" href="portraits.php">Portraits</a>
         <div class="adminContent">
             <a class="navLink" href="uploadimages.php">Upload Image</a>
             <a class="navLink" href="uploadvideos.php">Upload Video</a>
