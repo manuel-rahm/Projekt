@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-clip: "assets/loginBackground.mp4";
+}
+.login {
+    margin-top: 7%;
+}
+.loginTitle {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    margin-bottom: 0;;
+}
+.loginBody {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    padding: 30px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius:5px ;
+}
+.loginBody input {
+    margin: 10px 20px;
+    text-align: center;
+}
+.loginButton {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100px;
+    align-self: center;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
+.forgot {
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+label {
+    font-family: 'Shadows Into Light', cursive;
+    text-align: center;
+    color: white;
+}
