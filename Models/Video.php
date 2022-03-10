@@ -22,7 +22,7 @@ class Video
     /**
      * Get the id of the video
      * 
-     * @return string The id of the video
+     * @return int The id of the video
      */
     public function getvideoID()
     {

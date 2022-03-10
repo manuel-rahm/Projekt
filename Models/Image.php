@@ -25,7 +25,7 @@ class Image
     /**
      * Get the id of the image
      * 
-     * @return string The id of the image
+     * @return int The id of the image
      */
     public function getimageID()
     {

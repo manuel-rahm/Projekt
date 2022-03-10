@@ -1,3 +1,7 @@
+body {
+  background-image:url(../Siberia.jpg);
+  background-size: cover;
+}
 /* ---Navbar--- */
 .nav{
   display: flex;
