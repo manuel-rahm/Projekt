@@ -63,21 +63,21 @@ include('header.php');
     <div class="row">
         <div class="column">
             <h2 class="overviewTitle">Simon</h2>
-            <a href="gallery.php?gallery=Simon"><img class="overviewImg" src="upload/Images/Overview/Fizz."></a>
+            <a href="gallery.php?gallery=Simon"><img class="overviewImg" src="upload/Images/Overview/"></a>
         </div>
         <div class="column">
             <h2 class="overviewTitle">Vitus</h2>
-            <a href="gallery.php?gallery=Vitus"><img class="overviewImg" src="upload/Images/Overview/Sion."></a>
+            <a href="gallery.php?gallery=Vitus"><img class="overviewImg" src="upload/Images/Overview/"></a>
         </div>
         <div class="column">
             <h2 class="overviewTitle">Yanik</h2>
-            <a href="gallery.php?gallery=Yanik"><img class="overviewImg" src="upload/Images/Overview/Darius."></a>
+            <a href="gallery.php?gallery=Yanik"><img class="overviewImg" src="upload/Images/Overview/"></a>
         </div>
     </div>
     <div class="row">
         <div class="column">
             <h2 class="overviewTitle">Group</h2>
-            <a href="gallery.php?gallery=Group"><img class="overviewImg" src="upload/Images/Overview/Fizz."></a>
+            <a href="gallery.php?gallery=Group"><img class="overviewImg" src="upload/Images/Overview/"></a>
         </div>
     </div>
 </div>
