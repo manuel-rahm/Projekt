@@ -13,7 +13,7 @@
 
 <body>
     <nav class="nav" id="navbar">
-        <div class="navTitleContainer"><a class="navTitle" href="index.php">Jünger von Jesus</a></div>
+        <div class="navTitleContainer"><a class="navTitle" href="index.php">JvJ</a></div>
         <a href="javascript:void(0);" class="burger"><i class="fa fa-bars fa-2x"></i></a>
         <a class="navLink" href="index.php">Home</a>
         <a class="navLink" href="galleryoverview.php">Galleries</a>

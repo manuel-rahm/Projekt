@@ -7,7 +7,7 @@ include('header.php');
     <h1>Welcome to JvJ<br></h1>
 </div>
 <div class="title">
-    <h1>Jünger von Jesus</h1>
+    <h1>JvJ</h1>
 </div>
 <div id="indexContainer" class="container">
     <div class="row">
