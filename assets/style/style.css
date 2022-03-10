@@ -46,7 +46,8 @@
 .fa-arrow-up {
   color: White;
 }
-/* ---User info and log out button--- */
+
+/* ---User info and Change PW / Log Out button--- */
 .headerRight {
   display: flex;
   margin-left: auto;
@@ -104,6 +105,7 @@
     display: flex;
   }
 }
+
 /* ---Index content--- */
 .column{
   float: left;
@@ -140,6 +142,7 @@
   background-color: black;
   color: white;
 }
+
 /* ---Images for gallery overview--- */
 .overviewImg{
   display: flex;
@@ -162,4 +165,114 @@
   justify-content: center;
   width: 55%;
   margin: 0 auto ;
+}
+
+/* ---Upload forms--- */
+.uploadForm{
+  width: 33%;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding:20px 0;
+  margin-top: 30px;
+  text-align: center;
+}
+#fileToUpload{
+  border: 2px solid black;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: black;
+  transition: 1s;
+  color: white;
+  margin-bottom: 20px;
+}
+#submitUpload{
+  margin-top: 20px;
+  border: 2px solid black;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: black;
+  transition: 1s;
+  color: white;
+}
+#categories{
+  margin-top: 10px;
+}
+
+/* ---User management--- */
+.title{
+  text-align: center;
+}
+.addUser{
+  width: 30%;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding:20px 0;
+  margin-top: 30px;
+  text-align: left;
+}
+.addUser table{
+  margin: 0 auto;
+}
+.labelRole{
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+.addUser select{
+  display: block;
+  margin: 0 auto;
+}
+#addUserButton{
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 2px solid black;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: black;
+  transition: 1s;
+  color: white;
+}
+#editUserButton{
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 2px solid black;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: black;
+  transition: 1s;
+  color: white;
+}
+.users{
+  text-align: center;
+  display: flex;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  justify-content: center;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  width: 80%;
+  margin-top: 30px;
+  overflow-y: scroll;
+}
+.aButton{
+  color: White;
+  font-weight: bold;
+}
+.aButton:hover{
+  text-decoration: none;
+  color: aqua;
+}
+.changePWButton {
+  padding: 0 5px;
+}
+.changePWButton:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
 }

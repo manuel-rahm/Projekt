@@ -14,7 +14,7 @@ include('header.php');
             </tr>
             <tr>
                 <td><label for="password">Password*</label></td>
-                <td><input type="password" name="password" required></td>
+                <td><input type="password" name="password" minlength="6" required></td>
             </tr>
             <tr>
                 <td><label for="email">E-Mail</label></td>

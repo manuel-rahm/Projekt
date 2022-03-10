@@ -18,7 +18,7 @@
                 <label for="username">Username*:</label>
                 <input class="inputLogin" type="username" name="username" autofocus required>
                 <label for="password">Password*:</label>
-                <input class="inputLogin" type="password" name="password" required>
+                <input class="inputLogin" type="password" name="password" minlength="6" required>
                 <button class="loginButton" type="submit" value="Submit" name="submit">Log In</button>
                 <a class="forgot" href="forgot.php">Forgot your password?</a>
             </div>
