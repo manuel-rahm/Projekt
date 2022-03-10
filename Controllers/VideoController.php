@@ -27,7 +27,7 @@ class VideoController
     {
     }
     /**
-     * Delete selected image in database and unlink it
+     * Delete selected video in database and unlink it
      * 
      * @param string $filename File name of the image
      * 

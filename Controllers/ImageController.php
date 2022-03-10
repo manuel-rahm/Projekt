@@ -28,4 +28,14 @@ class ImageController
     public static function displayImages($gallery, $page)
     {
     }
+    /**
+     * Delete selected image in database and unlink it
+     * 
+     * @param string $filename File name of the image
+     * 
+     * @return void
+     */
+    public static function deleteImage()
+    {
+    }
 }

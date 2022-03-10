@@ -4,12 +4,16 @@ namespace JvJ\Controllers;
 
 require_once("dbconfig.php");
 
+/**
+ * Class for connection to the database via PDO
+ */
+
 class DBController
 {
     /**
      * Returns a connection object for the database
      * 
-     * @return \PDO PDO object to connect to the database
+     * @return \PDO $connection PDO object to connect to the database
      */
     public static function getConnection()
     {
