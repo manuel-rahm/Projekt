@@ -2,14 +2,17 @@
 <html>
 <?php
 session_start();
+
 include('Controllers/LoginController.php');
 include('Controllers/UserController.php');
 require_once('Controllers/DBController.php');
+
 if (isset($_SESSION['username'])) {
     header('Location: index.php');
 }
+
 if (isset($_POST['username'], $_POST['password'])) {
-    if (JVJ\Controllers\LoginController::checkLogin(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['password']))) {
+    if (JVJ\Controllers\LoginController::checkLogin(trim(htmlspecialchars($_POST['username'])), trim(htmlspecialchars($_POST['password'])))) {
         $_SESSION['animate'] = true;
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['role'] = \JvJ\Controllers\UserController::getRole($_SESSION['username']);

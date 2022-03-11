@@ -1,6 +1,7 @@
 <?php
 session_start();
 $title = "Videos - JvJ";
+
 include('header.php');
 ?>
 <div id="myModal" class="modal">

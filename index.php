@@ -1,14 +1,16 @@
 <?php
 session_start();
 $title = "Startseite - JvJ";
+
 include('header.php');
+
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit;
 }
 ?>
 <div id="welcomeScreen">
-    <h1>Welcome to JvJ<br></h1>
+    <h1>Welcome to JvJ<br><?php echo $_SESSION['username']; ?></h1>
 </div>
 <div class="title">
     <h1>JvJ</h1>

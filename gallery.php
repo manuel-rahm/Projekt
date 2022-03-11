@@ -1,9 +1,11 @@
 <?php
 session_start();
 $title = "Gallery - JvJ";
+
 include('header.php');
 include('Controllers/ImageController.php');
 include('Controllers/DBController.php');
+
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit;

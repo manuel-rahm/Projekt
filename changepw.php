@@ -1,8 +1,10 @@
 <?php
 session_start();
 $title = "Change PW - JvJ";
+
 include('header.php');
 include('Controllers/UserController.php');
+
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit;
