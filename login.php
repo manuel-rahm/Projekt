@@ -15,7 +15,7 @@ if (isset($_POST['username'], $_POST['password'])) {
     if (JVJ\Controllers\LoginController::checkLogin(trim(htmlspecialchars($_POST['username'])), trim(htmlspecialchars($_POST['password'])))) {
         $_SESSION['animate'] = true;
         $_SESSION['username'] = $_POST['username'];
-        $_SESSION['role'] = \JvJ\Controllers\UserController::getRole($_SESSION['username']);
+        $_SESSION['role'] = \JvJ\Controllers\UserController::getRole(trim(htmlspecialchars($_POST['username'])));
         header('Location: index.php');
     } else {
         echo '<script>alert("Username or password is incorrect!");</script>';
