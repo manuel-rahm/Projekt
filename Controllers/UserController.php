@@ -2,7 +2,7 @@
 
 namespace JvJ\Controllers;
 
-include('Controllers/DBController.php');
+require_once('Controllers/DBController.php');
 include('Models/User.php');
 
 /**
@@ -43,6 +43,11 @@ class UserController
      */
     public static function getRole($username)
     {
+        $connection = DBController::getConnection();
+        $preparedStatement = $connection->prepare('SELECT fldrole FROM tbluser WHERE fldusername = ?');
+        $preparedStatement->execute(array($username));
+        $dbUser = $preparedStatement->fetch();
+        return $dbUser['fldrole'];
     }
     /**
      * Updates a user in the database

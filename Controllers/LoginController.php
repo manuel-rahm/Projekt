@@ -3,7 +3,7 @@
 namespace JvJ\Controllers;
 
 /**
- * Class that controls the login process.
+ * Class that controls the login / logout process.
  * 
  */
 
@@ -19,6 +19,11 @@ class LoginController
      */
     public static function checkLogin($username, $password)
     {
+        $connection = DBController::getConnection();
+        $preparedStatement = $connection->prepare('SELECT fldpassword FROM tbluser WHERE fldusername = ?');
+        $preparedStatement->execute(array($username));
+        $dbUser = $preparedStatement->fetch();
+        return password_verify(trim($password), trim($dbUser['fldpassword']));
     }
     /**
      * Destroys the session to log the user out

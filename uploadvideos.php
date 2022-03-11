@@ -2,6 +2,11 @@
 session_start();
 $title = "Video Upload - JvJ";
 include('header.php');
+include('Controllers/UploadController.php');
+if ($_SESSION['role'] != 'Admin' && $_SESSION['role'] != 'Uploader') {
+    header('Location: login.php');
+    exit;
+}
 ?>
 <div class="uploadForm">
     <form method="POST" enctype="multipart/form-data">

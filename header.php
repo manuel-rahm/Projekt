@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+include('Controllers/LoginController.php');
+
+if (isset($_POST['logout'])) {
+    \JvJ\Controllers\LoginController::logout();
+}
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -18,17 +25,21 @@
         <a class="navLink" href="index.php">Home</a>
         <a class="navLink" href="galleryoverview.php">Galleries</a>
         <a class="navLink" href="videos.php">Video Gallery</a>
-        <div class="adminContent">
-            <a class="navLink" href="uploadimages.php">Upload Image</a>
-            <a class="navLink" href="uploadvideos.php">Upload Video</a>
-            <a class="navLink" href="usermanagement.php">Manage Users</a>
-        </div>
-        <div class="headerRight">
-            <p class="userInfo">Logged in as: </p>
-            <a class="changePWButton" href="changepw.php">Change PW</a>
-            <form method="POST">
-                <input type="hidden" name="logout">
-                <input class="logoutButton" type="submit" value="Log out">
-            </form>
-        </div>
+        <?php if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'Uploader') { ?>
+            <div class="adminContent">
+                <a class="navLink" href="uploadimages.php">Upload Image</a>
+                <a class="navLink" href="uploadvideos.php">Upload Video</a>
+            <?php } ?>
+            <?php if ($_SESSION['role'] == 'Admin') { ?>
+                <a class="navLink" href="usermanagement.php">Manage Users</a>
+            <?php } ?>
+            </div>
+            <div class="headerRight">
+                <p class="userInfo">Logged in as: <?php echo $_SESSION['username']; ?></p>
+                <a class="changePWButton" href="changepw.php">Change PW</a>
+                <form method="POST">
+                    <input type="hidden" name="logout">
+                    <input class="logoutButton" type="submit" value="Log out">
+                </form>
+            </div>
     </nav>

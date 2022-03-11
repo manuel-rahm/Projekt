@@ -2,6 +2,10 @@
 session_start();
 $title = "Startseite - JvJ";
 include('header.php');
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
 ?>
 <div id="welcomeScreen">
     <h1>Welcome to JvJ<br></h1>
@@ -42,7 +46,15 @@ include('header.php');
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="assets/js/functions.js"></script>
 <script src="assets/js/main.js"></script>
-
+<?php
+/* ---Landing Page Transition--- */
+if ($_SESSION['animate'] == true) {
+    echo '<script>
+    $(document).ready(welcomeAnimation);
+    </script>';
+    $_SESSION['animate'] = false;
+}
+?>
 </body>
 
 </html>

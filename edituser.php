@@ -2,6 +2,11 @@
 session_start();
 $title = "Edit User - JvJ";
 include('header.php');
+include('Controllers/UserController.php');
+if ($_SESSION['role'] != 'Admin') {
+    header('Location: login.php');
+    exit;
+}
 ?>
 <h1 class="title">Edit User</h1>
 <div class="addUser">

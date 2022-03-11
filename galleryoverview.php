@@ -2,6 +2,10 @@
 session_start();
 $title = "Galleries - JvJ";
 include('header.php');
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
 ?>
 <div class="container">
     <div class="row">
