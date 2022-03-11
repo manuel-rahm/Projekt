@@ -10,6 +10,13 @@ if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit;
 }
+
+if (isset($_GET['filename'])) {
+    if ($_SESSION['role'] == 'Admin') {
+        \JvJ\Controllers\ImageController::deleteImage(trim(htmlspecialchars($_GET['filename'])));
+    }
+}
+
 if (!isset($_GET['gallery'])) {
     header('Location: galleryoverview.php');
     exit;
@@ -20,16 +27,19 @@ if (!isset($_GET['gallery'])) {
     <img id="leftArrow" class="arrow" src="assets/left_arrow.png">
     <img id="modalImg" class="customModalContent" src="">
     <img id="rightArrow" class="arrow" src="assets/right_arrow.png">
-
-    <a id="deleteButton" href="gallery.php?filename=">DELETE</a>
+    <?php
+    if ($_SESSION['role'] == 'Admin') {
+    ?>
+        <a id="deleteButton" href="gallery.php?filename=">DELETE</a>
+    <?php } ?>
 </div>
 <div class="container">
     <?php
     $page = 1;
     if (isset($_GET['page'])) {
-        $page = $_GET['page'];
+        $page = trim(htmlspecialchars($_GET['page']));
     }
-    $UrlGETAttributes = JvJ\Controllers\ImageController::displayImages($_GET["gallery"], $page);
+    $UrlGETAttributes = JvJ\Controllers\ImageController::displayImages(trim(htmlspecialchars($_GET["gallery"])), $page);
     echo '<p class="showPage">Page ' . $page . '</p>';
     ?>
     <div id="pageLinks">

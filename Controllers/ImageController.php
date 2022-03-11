@@ -87,15 +87,12 @@ class ImageController
      * 
      * @return void
      */
-    public static function deleteImage()
+    public static function deleteImage($filename)
     {
         $connection = DBController::getConnection();
-        $filename = trim(htmlspecialchars($_GET['filename']));
         $imagePath = "upload/Images/";
         $query = "DELETE FROM tblimage WHERE fldfilename = '$filename'";
         $connection->query($query);
-        if (unlink($imagePath . $filename)) {
-            echo '<script>alert("Image deleted successfully!")</script>';
-        }
+        unlink($imagePath . $filename);
     }
 }
