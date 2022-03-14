@@ -18,7 +18,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\JvJ\\Controllers\\ImageController\u003A\u003AgetImages\u0028\u0029",
             "name": "getImages",
-            "summary": "Connect\u0020to\u0020the\u0020database\u0020to\u0020get\u0020all\u0020the\u0020images\u0020belonging\u0020to\u0020one\u0020category",
+            "summary": "Connect\u0020to\u0020the\u0020database\u0020to\u0020get\u0020all\u0020the\u0020images\u0020belonging\u0020to\u0020one\u0020category,\u0020part\u0020of\u0020function\u0020displayImages",
             "url": "classes/JvJ-Controllers-ImageController.html#method_getImages"
         },                {
             "fqsen": "\\JvJ\\Controllers\\ImageController\u003A\u003AgetImageCountCategory\u0028\u0029",
@@ -133,12 +133,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\JvJ\\Controllers\\VideoController\u003A\u003AgetVideos\u0028\u0029",
             "name": "getVideos",
-            "summary": "Connect\u0020to\u0020the\u0020database\u0020to\u0020get\u0020all\u0020the\u0020videos\u0020stored\u0020in\u0020there",
+            "summary": "Connect\u0020to\u0020the\u0020database\u0020to\u0020get\u0020all\u0020the\u0020videos\u0020stored\u0020in\u0020there,\u0020part\u0020of\u0020displayVideos",
             "url": "classes/JvJ-Controllers-VideoController.html#method_getVideos"
         },                {
             "fqsen": "\\JvJ\\Controllers\\VideoController\u003A\u003AgetVideoCount\u0028\u0029",
             "name": "getVideoCount",
-            "summary": "",
+            "summary": "Counts\u0020the\u0020number\u0020of\u0020videos,\u0020part\u0020of\u0020displayVideos",
             "url": "classes/JvJ-Controllers-VideoController.html#method_getVideoCount"
         },                {
             "fqsen": "\\JvJ\\Controllers\\VideoController\u003A\u003AdisplayVideos\u0028\u0029",
