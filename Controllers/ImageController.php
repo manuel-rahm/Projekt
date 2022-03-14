@@ -12,22 +12,23 @@ include('./Models/Image.php');
 class ImageController
 {
     /**
-     * Connect to the database to get all the images belonging to one category
+     * Connect to the database to get all the images belonging to one category, part of function displayImages
      * @param string $gallery The category (person) for a specific gallery
      * 
-     * @return $dbImages All images of one category
+     * @return $dbImages All images of one category if the gallery contains elements, else nothing will be returned
      */
     public static function getImages($gallery, $startingLimit, $imagesPerPage)
     {
         $connection = DBController::getConnection();
-
         $images = "SELECT fldfilename AS 'FileName' FROM tblimage WHERE fkcategory = '$gallery' order by fkcategory desc, fldFileName asc LIMIT " . $startingLimit . "," . $imagesPerPage;
         $categoryImages = $connection->query($images)->fetchAll();
         foreach ($categoryImages as $image) {
             $image = new \JvJ\Models\Image('', $image['FileName'], $gallery);
             $dbImages[] = $image;
         }
-        return $dbImages;
+        if (isset($dbImages)) {
+            return $dbImages;
+        }
     }
 
     /**
@@ -42,7 +43,9 @@ class ImageController
         $query = "SELECT count(*) FROM `tblimage` WHERE fkcategory = '$gallery'";
         $result = $connection->query($query);
         $numberOfImages = $result->fetchColumn();
-        return $numberOfImages;
+        if (isset($numberOfImages)) {
+            return $numberOfImages;
+        }
     }
 
     /**
@@ -53,37 +56,37 @@ class ImageController
      */
     public static function displayImages($gallery, $page)
     {
-        $connection = DBController::getConnection();
         echo '<div class="row">';
         $idCount = 0;
         $imagesPerPage = 9;
         $numberOfImages = ImageController::getImageCountCategory($gallery);
         $numberOfPages = ceil($numberOfImages / $imagesPerPage);
-        if (!isset($_GET['page'])) {
-            $page = 1;
-        } else {
-            $page = $_GET['page'];
-        }
         $startingLimit = ($page - 1) * $imagesPerPage;
         $dbImages = ImageController::getImages($gallery, $startingLimit, $imagesPerPage);
-        foreach ($dbImages as $image) {
-            echo '<div class="column"><img id="' . $idCount . '" class="galleryImg" src="upload/Images/' . $image->getFilename() . '"></div>';
-            $idCount++;
-            if (
-                $idCount % 3 === 0
-            ) {
-                echo '</div>';
-                echo '<div class="row">';
+        if (!isset($dbImages, $numberOfImages)) {
+            echo '<h1>No images in this gallery :(</h1>';
+            $UrlGETAttributes = ["", $gallery];
+            return $UrlGETAttributes;
+        } else {
+            foreach ($dbImages as $image) {
+                echo '<div class="column"><img id="' . $idCount . '" class="galleryImg" src="upload/Images/' . $image->getFilename() . '"></div>';
+                $idCount++;
+                if (
+                    $idCount % 3 === 0
+                ) {
+                    echo '</div>';
+                    echo '<div class="row">';
+                }
+                if ($idCount % 9 === 0) {
+                    echo '</div>';
+                }
             }
-            if ($idCount % 9 === 0) {
+            if ($idCount % 3 != 0) {
                 echo '</div>';
             }
+            $UrlGETAttributes = [$numberOfPages, $gallery];
+            return $UrlGETAttributes;
         }
-        if ($idCount % 3 != 0) {
-            echo '</div>';
-        }
-        $UrlGETAttributes = [$numberOfPages, $gallery];
-        return $UrlGETAttributes;
     }
 
     /**

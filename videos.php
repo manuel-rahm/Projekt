@@ -10,6 +10,10 @@ if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit;
 }
+
+if (isset($_GET['filename'])) {
+    \JvJ\Controllers\VideoController::deleteVideo(trim(htmlspecialchars($_GET['filename'])));
+}
 ?>
 <div id="myModal" class="modal">
     <div id="close">X</div>
