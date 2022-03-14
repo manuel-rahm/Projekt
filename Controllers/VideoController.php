@@ -52,7 +52,6 @@ class VideoController
      */
     public static function displayVideos($page)
     {
-        $connection = DBController::getConnection();
         echo '<div class="row">';
         $idCount = 0;
         $videosPerPage = 9;
