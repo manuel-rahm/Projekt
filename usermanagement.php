@@ -30,8 +30,9 @@ if ($_SESSION['role'] != 'Admin') {
     </table>
     <label class="labelRole" for="Role">Select role:</label>
     <select name="role">
-        <option value="admin">Admin</option>
-        <option value="user">User</option>
+        <option value="Admin">Admin</option>
+        <option value="Uploader">Uploader</option>
+        <option value="User">User</option>
     </select>
     <input id="addUserButton" type="submit" name="addUser" value="Add User">
     </form>
