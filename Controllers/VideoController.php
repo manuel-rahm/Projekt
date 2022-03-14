@@ -17,7 +17,7 @@ class VideoController
     public static function getVideos()
     {
         $connection = DBController::getConnection();
-        $preparedStatement = $connection->prepare('SELECT fldFileName FROM tblvideos');
+        $preparedStatement = $connection->prepare('SELECT fldfilename FROM tblvideos');
         $preparedStatement->execute();
         $dbVideos = $preparedStatement->fetch();
         return $dbVideos;
@@ -36,7 +36,7 @@ class VideoController
      * Display the videos and pagination
      * @param int $page Current Page
      * 
-     * @return $numberUrl URL including number of pages and 
+     * @return $UrlGETAttributes Contains the attributes for GET parameters used in the video gallery URL
      */
     public static function displayVideos($page)
     {

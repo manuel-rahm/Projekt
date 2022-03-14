@@ -5,6 +5,11 @@ $title = "Videos - JvJ";
 include('header.php');
 include('Controllers/VideoController.php');
 include('Controllers/DBController.php');
+
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
 ?>
 <div id="myModal" class="modal">
     <div id="close">X</div>

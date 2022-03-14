@@ -2,6 +2,8 @@
 
 namespace JvJ\Controllers;
 
+include('./Models/Image.php');
+
 /**
  * Class for handling images. Interacts with the corresponding model.
  * 
@@ -15,12 +17,16 @@ class ImageController
      * 
      * @return $dbImages All images of one category
      */
-    public static function getImages($gallery)
+    public static function getImages($gallery, $startingLimit, $imagesPerPage)
     {
         $connection = DBController::getConnection();
-        $preparedStatement = $connection->prepare('SELECT fldfilename FROM tblimage WHERE fkcategory = ?');
-        $preparedStatement->execute(array($gallery));
-        $dbImages = $preparedStatement->fetch();
+
+        $images = "SELECT fldfilename AS 'FileName' FROM tblimage WHERE fkcategory = '$gallery' order by fkcategory desc, fldFileName asc LIMIT " . $startingLimit . "," . $imagesPerPage;
+        $categoryImages = $connection->query($images)->fetchAll();
+        foreach ($categoryImages as $image) {
+            $image = new \JvJ\Models\Image('', $image['FileName'], $gallery);
+            $dbImages[] = $image;
+        }
         return $dbImages;
     }
 
@@ -41,8 +47,9 @@ class ImageController
 
     /**
      * Display the images for one category and pagination of those images
+     * @param array $UrlGETAttributes Contains the attributes for GET parameters used in the gallery URL
      * 
-     * @return void
+     * @return $UrlGETAttributes Contains the attributes for GET parameters used in the gallery URL
      */
     public static function displayImages($gallery, $page)
     {
@@ -58,10 +65,9 @@ class ImageController
             $page = $_GET['page'];
         }
         $startingLimit = ($page - 1) * $imagesPerPage;
-        $images = "SELECT fldfilename AS 'FileName' FROM tblimage WHERE fkcategory = '$gallery' order by fkcategory desc, fldFileName asc LIMIT " . $startingLimit . "," . $imagesPerPage;
-        $categoryImages = $connection->query($images)->fetchAll();
-        foreach ($categoryImages as $image) {
-            echo '<div class="column"><img id="' . $idCount . '" class="galleryImg" src="upload/Images/' . $image['FileName'] . '"></div>';
+        $dbImages = ImageController::getImages($gallery, $startingLimit, $imagesPerPage);
+        foreach ($dbImages as $image) {
+            echo '<div class="column"><img id="' . $idCount . '" class="galleryImg" src="upload/Images/' . $image->getFilename() . '"></div>';
             $idCount++;
             if (
                 $idCount % 3 === 0
