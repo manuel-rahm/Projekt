@@ -20,7 +20,15 @@ class UserController
      */
     public function addUser($user)
     {
+        try {
+            $connection = DBController::getConnection();
+            $preparedStatement = $connection->prepare("INSERT INTO tbluser (fldusername, fldpassword, fldmail, fldrole) VALUES (?, ?, ?, ?)");
+            $preparedStatement->execute(array($user->getUsername(), $user->getPassword(), $user->getMail(), $user->getRole()));
+        } catch (\Exception $err) {
+            error_log("User couldn't be created. Error: " . $err->getMessage());
+        }
     }
+
     /**
      * Returns an array with all users from the database
      * 
@@ -28,7 +36,20 @@ class UserController
      */
     public function getUsers()
     {
+        try {
+            $connection = DBController::getConnection();
+            $result = $connection->query("SELECT fldusername AS 'username', fldpassword AS 'password', fldmail AS 'mail', fldrole AS 'role' FROM tbluser")->fetchAll();
+            $users = [];
+            foreach ($result as $row) {
+                $user = new \JvJ\Models\User($row['username'], $row['password'], $row['mail'], $row['role']);
+                $users[] = $user;
+            }
+            return $users;
+        } catch (\Exception $err) {
+            error_log("Couldn't get users. Error: " . $err->getMessage());
+        }
     }
+
     /**
      * Returns an array with all information from one user from the database
      * 
@@ -36,7 +57,16 @@ class UserController
      */
     public function getUser($username)
     {
+        try {
+            $connection = DBController::getConnection();
+            $user = $connection->query("SELECT fldusername AS 'username', fldpassword AS 'password', fldmail AS 'mail', fldrole AS 'role' FROM tbluser WHERE fldusername = '$username'")->fetch();
+            $user = new \JvJ\Models\User($user['username'], $user['password'], $user['mail'], $user['role']);
+            return $user;
+        } catch (\Exception $err) {
+            error_log("Couldn't get users. Error: " . $err->getMessage());
+        }
     }
+
     /**
      * Get the role of the user that is logging in
      * @param string $username Username of the user
@@ -49,6 +79,7 @@ class UserController
         $dbUser = $preparedStatement->fetch();
         return $dbUser['fldrole'];
     }
+
     /**
      * Updates a user in the database
      * 
@@ -59,6 +90,7 @@ class UserController
     public function updateUser($user)
     {
     }
+
     /**
      * Deletes a user from the database
      * 
@@ -69,6 +101,7 @@ class UserController
     public function deleteUser($username)
     {
     }
+
     /**
      * Resets the password of a user to a fixed value for initial login
      * @param string $username Username of the user to reset the password for
@@ -77,6 +110,7 @@ class UserController
     public static function resetPassword($username, $randomPassword)
     {
     }
+
     /**
      * Generates a random, temporary password
      * @param int $chars the amount of characters the password should contain
@@ -84,6 +118,7 @@ class UserController
     public static function pwgenerate($chars)
     {
     }
+
     /**
      * Updates the password from the logged in user
      * @param string $username Username of the user logged in

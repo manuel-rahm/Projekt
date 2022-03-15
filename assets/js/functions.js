@@ -20,6 +20,7 @@ var newsrc;
 var emptysrcid;
 var newsrcempty;
 function zoomImage() {
+    $('.nav').css('display', 'none');
     $('#myModal').css('display', 'flex');
     var src = $(this).attr('src');
     id = parseInt($(this).attr('id'));
@@ -41,6 +42,7 @@ function zoomImage() {
     }
 }
 function closeModal() {
+    $('.nav').css('display', 'flex');
     $('#myModal').css('display', 'none');
     $('.customModalContent').attr('src', "");
     id = undefined;
@@ -87,6 +89,7 @@ function swipeRight() {
     }
 }
 function zoomVideo() {
+    $('.nav').css('display', 'none');
     $('#myModal').css('display', 'flex');
     var src = $(this).attr('src');
     id = parseInt($(this).attr('id'));

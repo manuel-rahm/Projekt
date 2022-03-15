@@ -21,7 +21,7 @@ if (isset($_GET['filename'])) {
     <video id="modalVid" class="customModalContent" src="">Your browser does not support this type of video.</video>
     <img id="rightArrowVideo" class="arrow" src="assets/right_arrow.png">
     <?php
-    if ($_SESSION['role'] == 'Admin') {
+    if ($_SESSION['role'] == 'admin') {
     ?>
         <a id="deleteButtonVid" href="videos.php?filename=">DELETE</a>
     <?php } ?>

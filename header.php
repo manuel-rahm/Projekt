@@ -25,12 +25,12 @@ if (isset($_POST['logout'])) {
         <a class="navLink" href="index.php">Home</a>
         <a class="navLink" href="galleryoverview.php">Galleries</a>
         <a class="navLink" href="videos.php">Video Gallery</a>
-        <?php if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'Uploader') { ?>
+        <?php if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader') { ?>
             <div class="adminContent">
                 <a class="navLink" href="uploadimages.php">Upload Image</a>
                 <a class="navLink" href="uploadvideos.php">Upload Video</a>
             <?php } ?>
-            <?php if ($_SESSION['role'] == 'Admin') { ?>
+            <?php if ($_SESSION['role'] == 'admin') { ?>
                 <a class="navLink" href="usermanagement.php">Manage Users</a>
             <?php } ?>
             </div>

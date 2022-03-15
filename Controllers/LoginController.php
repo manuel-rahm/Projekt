@@ -25,6 +25,7 @@ class LoginController
         $dbUser = $preparedStatement->fetch();
         return password_verify(trim($password), trim($dbUser['fldpassword']));
     }
+
     /**
      * Destroys the session to log the user out
      * 

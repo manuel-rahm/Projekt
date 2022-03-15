@@ -5,7 +5,7 @@ $title = "Video Upload - JvJ";
 include('header.php');
 include('Controllers/UploadController.php');
 
-if ($_SESSION['role'] != 'Admin' && $_SESSION['role'] != 'Uploader') {
+if ($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'uploader') {
     header('Location: login.php');
     exit;
 }
@@ -16,9 +16,9 @@ if (isset($_FILES['files'])) {
 ?>
 <div class="uploadForm">
     <form method="POST" enctype="multipart/form-data">
-        <p>Select file or multiple files to upload:</p>
-        <input type="file" name="files[]" id="fileToUpload" required multiple><br>
-        <input type="submit" value="Upload File" name="submit" id="submitUpload">
+        <p>Select file or multiple files to upload.<br>Overall upload should be < 200 MB:</p>
+                <input type="file" name="files[]" id="fileToUpload" required multiple><br>
+                <input type="submit" value="Upload File" name="submit" id="submitUpload">
     </form>
 </div>
 

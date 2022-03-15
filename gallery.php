@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 if (isset($_GET['filename'])) {
-    if ($_SESSION['role'] == 'Admin') {
+    if ($_SESSION['role'] == 'admin') {
         \JvJ\Controllers\ImageController::deleteImage(trim(htmlspecialchars($_GET['filename'])));
     }
 }
@@ -28,7 +28,7 @@ if (!isset($_GET['gallery'])) {
     <img id="modalImg" class="customModalContent" src="">
     <img id="rightArrow" class="arrow" src="assets/right_arrow.png">
     <?php
-    if ($_SESSION['role'] == 'Admin') {
+    if ($_SESSION['role'] == 'admin') {
     ?>
         <a id="deleteButton" href="gallery.php?filename=">DELETE</a>
     <?php } ?>

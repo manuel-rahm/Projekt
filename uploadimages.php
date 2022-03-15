@@ -5,7 +5,7 @@ $title = "Image Upload - JvJ";
 include('header.php');
 include('Controllers/UploadController.php');
 
-if ($_SESSION['role'] != 'Admin' && $_SESSION['role'] != 'Uploader') {
+if ($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'uploader') {
     header('Location: login.php');
     exit;
 }
@@ -16,7 +16,7 @@ if (isset($_FILES['files'])) {
 ?>
 <div class="uploadForm">
     <form method="POST" enctype="multipart/form-data">
-        <p>Select file or multiple files to upload<br>(multiple files will receive the same category selected):</p>
+        <p>Select file or multiple files to upload<br>Overall upload should be < 200 MB<br>(multiple files will receive the same category selected):</p>
         <input type="file" name="files[]" id="fileToUpload" required multiple>
         <br>
         <label for="category">Select category:</label><br>

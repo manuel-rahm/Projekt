@@ -5,7 +5,7 @@ $title = "Users - JvJ";
 include('header.php');
 include('Controllers/UserController.php');
 
-if ($_SESSION['role'] != 'Admin') {
+if ($_SESSION['role'] != 'admin') {
     header('Location: login.php');
     exit;
 }

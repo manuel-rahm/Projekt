@@ -13,7 +13,9 @@ class ImageController
 {
     /**
      * Connect to the database to get all the images belonging to one category, part of function displayImages
-     * @param string $gallery The category (person) for a specific gallery
+     * @param string $gallery The selected gallery to be shown
+     * @param $startingLimit Selector for images belonging to a gallery and specific page
+     * @param $imagePerPage Number of how many images should be shown on a page
      * 
      * @return $dbImages All images of one category if the gallery contains elements, else nothing will be returned
      */
@@ -33,7 +35,7 @@ class ImageController
 
     /**
      * Counts the number of images of one category, part of function displayImages
-     * @param string $gallery The category (person) for a specific gallery
+     * @param string $gallery The selected gallery to be shown
      * 
      * @return $numberOfImages Returns the number of images belonging to one category
      */
@@ -50,9 +52,10 @@ class ImageController
 
     /**
      * Display the images for one category and pagination of those images
-     * @param array $UrlGETAttributes Contains the attributes for GET parameters used in the gallery URL
+     * @param string $gallery The selected gallery to be shown
+     * @param $page The current page to be shown
      * 
-     * @return $UrlGETAttributes Contains the attributes for GET parameters used in the gallery URL
+     * @return $UrlGETAttributes Contains the attributes for GET parameters as an array used in the gallery URL
      */
     public static function displayImages($gallery, $page)
     {
