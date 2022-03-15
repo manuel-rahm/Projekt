@@ -9,6 +9,10 @@ if ($_SESSION['role'] != 'Admin' && $_SESSION['role'] != 'Uploader') {
     header('Location: login.php');
     exit;
 }
+
+if (isset($_FILES['files'])) {
+    \JvJ\Controllers\UploadController::uploadVideos($_FILES['files']);
+}
 ?>
 <div class="uploadForm">
     <form method="POST" enctype="multipart/form-data">
