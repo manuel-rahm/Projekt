@@ -11,20 +11,54 @@ include('DBController.php');
 class UploadController
 {
     /**
-     * Uploads Images
+     * Uploads images to the database and moves the files to the specified directory
      * 
      * @param $files Files that are uploaded via POST
      */
     public static function uploadImages($files)
     {
+        $connection = DBController::getConnection();
+        $imagePath = "upload/Images/";
+        $allowImageTypes = array('image/jpg', 'image/png', 'image/jpeg', 'image/gif');
+        if (isset($files)) {
+            $totalfileSize = array_sum($_FILES['files']['size']);
+            if ($totalfileSize > 200000000) {
+                echo '<script>alert("Files are too large, please keep it under 200MB!")</script>';
+            } else {
+                $fileCount = count($files['name']);
+                for ($i = 0; $i < $fileCount; $i++) {
+                    $extension = $files['type'][$i];
+                    if (!in_array($extension, $allowImageTypes)) {
+                        echo '<script>alert("Only png, jpg, jpeg and gif files are allowed!")</script>';
+                    } else {
+                        $data = [
+                            'fname' => $files['name'][$i],
+                            'fcategory' => $_POST['category'],
+                        ];
+                        $query = "INSERT INTO tblimage (fldfilename, fkcategory) SELECT :fname, :fcategory FROM dual WHERE NOT EXISTS (SELECT fldfilename FROM tblimage WHERE tblimage.fldfilename = :fname)";
+                        $preparedStatement = $connection->prepare($query);
+                        $file = $files['name'][$i];
+                        $pathFile = $imagePath . $file;
+                        move_uploaded_file($files['tmp_name'][$i], $pathFile);
+                        $preparedStatement->execute($data);
+                    }
+                }
+                echo '<script>alert("File/s uploaded successfully!")</script>';
+            }
+        } else {
+            echo '<script>alert("No file/s selected!")</script>';
+        }
     }
+
     /**
-     * Uploads Videos
+     * Uploads videos to the database and moves the files to the specified directory
      * 
      * @param $files Files that are uploaded via POST
      * 
      */
     public static function uploadVideos($files)
     {
+        $videopath = "upload/Videos/";
+        $allowVideoTypes = array('video/mp4', 'video/webm', 'video/ogg');
     }
 }
