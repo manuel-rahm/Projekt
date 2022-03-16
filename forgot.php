@@ -16,7 +16,7 @@ if (isset($_POST['username'], $_POST['email'])) {
         MailController::sendResetPasswordMail(trim(htmlspecialchars($_POST['username'])), trim(htmlspecialchars($_POST['email'])), $randomPassword);
         UserController::resetPassword(trim(htmlspecialchars($_POST['username'])), $randomPassword);
     } else {
-        echo "<script>alert('Mail and/or user not found in the database!')</script>";
+        echo "<script>alert('Mail and/or user not found in the database or the provided mail does not belong to the entered user!')</script>";
     }
 }
 ?>
@@ -30,6 +30,7 @@ if (isset($_POST['username'], $_POST['email'])) {
 </head>
 
 <body>
+    <video src="assets/loginBackground.mp4" class="videoBackground" muted loop autoplay></video>
     <div class="login">
         <form method="POST">
             <h1 class="loginTitle">PW Reset - JvJ</h1>
@@ -39,10 +40,11 @@ if (isset($_POST['username'], $_POST['email'])) {
                 <label for="email">E-Mail*:</label>
                 <input class="inputLogin" type="email" name="email" required>
                 <button class="loginButton" type="submit" value="login">Reset PW</button>
+                <a class="getBackLink" href="login.php">Go back to login</a>
             </div>
     </div>
     </form>
-    </div>
+
 </body>
 
 </html>

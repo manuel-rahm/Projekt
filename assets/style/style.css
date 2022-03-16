@@ -68,6 +68,9 @@ body {
   border-radius: 5px;
   margin-left: 10px;
 }
+.logoutButton:hover {
+  transform:scale(1.07);
+}
 .changePWButton {
   background-color: white;
   color: black;
@@ -79,6 +82,7 @@ body {
 .changePWButton:hover {
     color: black;
     text-decoration: none;
+    transform:scale(1.07);
 }
 .burger {
   display: none;
@@ -255,6 +259,10 @@ body {
   padding:0 10px;
   text-align: center;
 }
+#deleteButton:hover{
+  text-decoration: none;
+  transform:scale(1.07);
+}
 #deleteButtonVid{
   border: 1px solid black;
   border-radius: .2em;
@@ -266,6 +274,10 @@ body {
   padding:0 10px;
   text-align: center;
 }
+#deleteButtonVid:hover{
+  text-decoration: none;
+  transform:scale(1.07);
+}
 .arrow{
   background:transparent;
   height: 120px;
@@ -273,6 +285,7 @@ body {
 }
 .arrow:hover{
   cursor: pointer;
+  transform:scale(1.07);
 }
 
 /* ---Upload forms--- */
@@ -300,8 +313,10 @@ body {
   padding: .2em .4em;
   border-radius: .2em;
   background-color: black;
-  transition: 1s;
   color: white;
+}
+#submitUpload:hover{
+  transform: scale(1.07);
 }
 #categories{
   margin-top: 10px;
@@ -355,8 +370,10 @@ body {
   padding: .2em .4em;
   border-radius: .2em;
   background-color: black;
-  transition: 1s;
   color: white;
+}
+#addUserButton:hover{
+  transform:scale(1.07);
 }
 #editUserButton{
   display: block;
@@ -399,6 +416,8 @@ body {
   padding: .2em .4em;
   border-radius: .2em;
   background-color: black;
-  transition: 1s;
   color: white;
+}
+#changePWButton:hover {
+  transform: scale(1.07);
 }
