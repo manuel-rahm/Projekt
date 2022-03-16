@@ -36,14 +36,14 @@ if (isset($_GET['deleteUser'])) {
             </tr>
             <tr>
                 <td><label for="email">E-Mail</label></td>
-                <td><input type="mail" name="email"></td>
+                <td><input type="email" name="email"></td>
             </tr>
     </table>
     <label class="labelRole" for="Role">Select role:</label>
     <select name="role">
-        <option value="Admin">Admin</option>
-        <option value="Uploader">Uploader</option>
-        <option value="User">User</option>
+        <option value="admin">Admin</option>
+        <option value="uploader">Uploader</option>
+        <option value="user">User</option>
     </select>
     <input id="addUserButton" type="submit" name="addUser" value="Add User">
     </form>

@@ -15,15 +15,20 @@ if (isset($_GET['updateUser'])) {
     $user = $userController->getUser(htmlspecialchars($_GET['updateUser']));
 }
 
-if (isset($_POST['password'], $_POST['editUser'])) {
+if (isset($_POST['editUser']) and $_POST['password'] != NULL) {
     $hashedPassword = password_hash(trim($_POST['password']), NULL);
     $userController = new \JvJ\Controllers\UserController();
     $user = new \JvJ\Models\User($_POST['username'], $hashedPassword, trim($_POST['email']), $_POST['role']);
-    $userController->updateUser($user);
-} elseif (!isset($_POST['password']) and isset($_POST['editUser'])) {
+    if ($userController->updateUser($user)) {
+        echo "<script>alert('Updated user and password!')</script>";
+    }
+}
+if (isset($_POST['editUser']) and $_POST['password'] == NULL) {
     $userController = new \JvJ\Controllers\UserController();
     $user = new \JvJ\Models\User($_POST['username'], "", trim($_POST['email']), $_POST['role']);
-    $userController->updateUserWoPassword($user);
+    if ($userController->updateUserWoPassword($user)) {
+        echo "<script>alert('Updated user without password!')</script>";
+    }
 }
 ?>
 <h1 class="title">Edit User</h1>
@@ -41,7 +46,7 @@ if (isset($_POST['password'], $_POST['editUser'])) {
             </tr>
             <tr>
                 <td><label for="email">E-Mail</label></td>
-                <td><input type="text" name="email" value="<?php echo $user->getMail(); ?>"></td>
+                <td><input type="email" name="email" value="<?php echo $user->getMail(); ?>"></td>
             </tr>
     </table>
     <label class="labelRole" for="Role">Select role:</label>

@@ -85,7 +85,7 @@ class UserController
      * 
      * @param \JvJ\Models\User $user User object with updated information
      * 
-     * @return void
+     * @return bool Returns true if the query was executed successfully
      */
     public function updateUser($user)
     {
@@ -93,6 +93,26 @@ class UserController
             $connection = DBController::getConnection();
             $preparedStatement = $connection->prepare("UPDATE tbluser SET fldusername=?, fldpassword=?, fldmail=?, fldrole=? WHERE fldusername=?");
             $preparedStatement->execute(array($user->getUsername(), $user->getPassword(), $user->getMail(), $user->getRole(), $user->getUsername()));
+            return $preparedStatement;
+        } catch (\Exception $err) {
+            error_log("User couldn't be updated. Error: " . $err->getMessage());
+        }
+    }
+
+    /**
+     * Updates a user in the database without updating the password
+     * 
+     * @param \JvJ\Models\User $user User object with updated information
+     * 
+     * @return bool Returns true if the query was executed successfully
+     */
+    public function updateUserWoPassword($user)
+    {
+        try {
+            $connection = DBController::getConnection();
+            $preparedStatement = $connection->prepare("UPDATE tbluser SET fldusername=?, fldmail=?, fldrole=? WHERE fldusername=?");
+            $preparedStatement->execute(array($user->getUsername(), $user->getMail(), $user->getRole(), $user->getUsername()));
+            return $preparedStatement;
         } catch (\Exception $err) {
             error_log("User couldn't be updated. Error: " . $err->getMessage());
         }
@@ -160,24 +180,6 @@ class UserController
             $preparedStatement->execute(array($password, $username));
         } catch (\Exception $err) {
             error_log("Password couldn't be updated. Error: " . $err->getMessage());
-        }
-    }
-
-    /**
-     * Updates a user in the database without updating the password
-     * 
-     * @param \JvJ\Models\User $user User object with updated information
-     * 
-     * @return void
-     */
-    public function updateUserWoPassword($user)
-    {
-        try {
-            $connection = DBController::getConnection();
-            $preparedStatement = $connection->prepare("UPDATE tbluser SET fldusername=?, fldmail=?, fldrole=? WHERE fldusername=?");
-            $preparedStatement->execute(array($user->getUsername(), $user->getMail(), $user->getRole(), $user->getUsername()));
-        } catch (\Exception $err) {
-            error_log("User couldn't be updated. Error: " . $err->getMessage());
         }
     }
 }
