@@ -15,7 +15,7 @@ if (isset($_GET['updateUser'])) {
     $user = $userController->getUser(htmlspecialchars($_GET['updateUser']));
 }
 
-if (isset($_POST['editUser']) and $_POST['password'] != NULL) {
+if (isset($_POST['editUser']) && $_POST['password'] != NULL) {
     $hashedPassword = password_hash(trim($_POST['password']), NULL);
     $userController = new \JvJ\Controllers\UserController();
     $user = new \JvJ\Models\User($_POST['username'], $hashedPassword, trim($_POST['email']), $_POST['role']);
@@ -23,7 +23,7 @@ if (isset($_POST['editUser']) and $_POST['password'] != NULL) {
         echo "<script>alert('Updated user and password!')</script>";
     }
 }
-if (isset($_POST['editUser']) and $_POST['password'] == NULL) {
+if (isset($_POST['editUser']) && $_POST['password'] == NULL) {
     $userController = new \JvJ\Controllers\UserController();
     $user = new \JvJ\Models\User($_POST['username'], "", trim($_POST['email']), $_POST['role']);
     if ($userController->updateUserWoPassword($user)) {

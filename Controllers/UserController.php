@@ -171,13 +171,16 @@ class UserController
      * Updates the password from the logged in user
      * @param string $username Username of the user logged in
      * @param string $password The new password of the user
+     * 
+     * @return bool Returns true if the query was successfully run
      */
     public function updatePassword($username, $password)
     {
         try {
             $connection = DBController::getConnection();
             $preparedStatement = $connection->prepare("UPDATE tbluser SET fldpassword=? WHERE fldusername=?");
-            $preparedStatement->execute(array($password, $username));
+            $result = $preparedStatement->execute(array($password, $username));
+            return $result;
         } catch (\Exception $err) {
             error_log("Password couldn't be updated. Error: " . $err->getMessage());
         }
