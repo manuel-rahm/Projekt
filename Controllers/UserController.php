@@ -89,6 +89,13 @@ class UserController
      */
     public function updateUser($user)
     {
+        try {
+            $connection = DBController::getConnection();
+            $preparedStatement = $connection->prepare("UPDATE tbluser SET fldusername=?, fldpassword=?, fldmail=?, fldrole=? WHERE fldusername=?");
+            $preparedStatement->execute(array($user->getUsername(), $user->getPassword(), $user->getMail(), $user->getRole(), $user->getUsername()));
+        } catch (\Exception $err) {
+            error_log("User couldn't be updated. Error: " . $err->getMessage());
+        }
     }
 
     /**
@@ -100,23 +107,44 @@ class UserController
      */
     public function deleteUser($username)
     {
+        try {
+            $connection = DBController::getConnection();
+            $preparedStatement = $connection->prepare("DELETE FROM tbluser WHERE fldusername=?");
+            $result = $preparedStatement->execute(array($username));
+            return $result;
+        } catch (\Exception $err) {
+            error_log("Couldn't delete user. Error: " . $err->getMessage());
+        }
     }
 
     /**
-     * Resets the password of a user to a fixed value for initial login
+     * Resets the password of a user to a random value for initial login
      * @param string $username Username of the user to reset the password for
      * @param string $randomPassword A random password created that is sent to the user for login
      */
     public static function resetPassword($username, $randomPassword)
     {
+        try {
+            $newPasswordHash = password_hash($randomPassword, NULL);
+            $connection = DBController::getConnection();
+            $preparedStatement = $connection->prepare("UPDATE tbluser SET fldpassword=? WHERE fldusername=?");
+            $preparedStatement->execute(array($newPasswordHash, $username));
+        } catch (\Exception $err) {
+            error_log("Password couldn't be updated. Error: " . $err->getMessage());
+        }
     }
 
     /**
      * Generates a random, temporary password
      * @param int $chars the amount of characters the password should contain
+     * 
+     * @return $randomPassword Returns the randomly generated password
      */
     public static function pwgenerate($chars)
     {
+        $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+        $randomPassword = substr(str_shuffle($data), 0, $chars);
+        return $randomPassword;
     }
 
     /**
@@ -126,5 +154,30 @@ class UserController
      */
     public function updatePassword($username, $password)
     {
+        try {
+            $connection = DBController::getConnection();
+            $preparedStatement = $connection->prepare("UPDATE tbluser SET fldpassword=? WHERE fldusername=?");
+            $preparedStatement->execute(array($password, $username));
+        } catch (\Exception $err) {
+            error_log("Password couldn't be updated. Error: " . $err->getMessage());
+        }
+    }
+
+    /**
+     * Updates a user in the database without updating the password
+     * 
+     * @param \JvJ\Models\User $user User object with updated information
+     * 
+     * @return void
+     */
+    public function updateUserWoPassword($user)
+    {
+        try {
+            $connection = DBController::getConnection();
+            $preparedStatement = $connection->prepare("UPDATE tbluser SET fldusername=?, fldmail=?, fldrole=? WHERE fldusername=?");
+            $preparedStatement->execute(array($user->getUsername(), $user->getMail(), $user->getRole(), $user->getUsername()));
+        } catch (\Exception $err) {
+            error_log("User couldn't be updated. Error: " . $err->getMessage());
+        }
     }
 }
