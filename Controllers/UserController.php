@@ -155,7 +155,7 @@ class UserController
     }
 
     /**
-     * Generates a random, temporary password
+     * Generates a random, temporary password - from https://stackoverflow.com/questions/6101956/generating-a-random-password-in-php
      * @param int $chars the amount of characters the password should contain
      * 
      * @return $randomPassword Returns the randomly generated password

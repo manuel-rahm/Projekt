@@ -13,6 +13,9 @@ if ($_SESSION['role'] != 'admin') {
 if (isset($_GET['updateUser'])) {
     $userController = new \JvJ\Controllers\UserController();
     $user = $userController->getUser(htmlspecialchars($_GET['updateUser']));
+} else {
+    header('Location: usermanagement.php');
+    exit;
 }
 
 if (isset($_POST['editUser']) && $_POST['password'] != NULL) {
