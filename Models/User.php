@@ -3,7 +3,7 @@
 namespace JvJ\Models;
 
 /**
- * Class for users, used to temporarily save the attributes of a user. Interacts with the corresponding controller.
+ * Class for users, used to temporarily save the attributes of a user. Interacts with the corresponding controller
  * @param string $username the username of the user
  * @param string $password the password of the user
  * @param string $mail the mail of the user

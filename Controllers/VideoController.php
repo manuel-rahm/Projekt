@@ -5,7 +5,7 @@ namespace JvJ\Controllers;
 include('./Models/Video.php');
 
 /**
- * Class for handling videos. Interacts with the corresponding model.
+ * Class for handling videos. Interacts with the corresponding model
  * 
  */
 

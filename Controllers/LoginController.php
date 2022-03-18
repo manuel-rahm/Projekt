@@ -3,7 +3,7 @@
 namespace JvJ\Controllers;
 
 /**
- * Class that controls the login / logout process.
+ * Class that controls the login / logout process
  * 
  */
 

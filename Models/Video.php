@@ -3,7 +3,7 @@
 namespace JvJ\Models;
 
 /**
- * Class for videos, used to temporarily save the attributes of a video. Interacts with the corresponding controller.
+ * Class for videos, used to temporarily save the attributes of a video. Interacts with the corresponding controller
  * @param int $videoID id of the video
  * @param string $filename the file name of the video
  */

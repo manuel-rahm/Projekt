@@ -3,7 +3,7 @@
 namespace JvJ\Models;
 
 /**
- * Class for images, used to temporarily save the attributes of an image. Interacts with the corresponding controller.
+ * Class for images, used to temporarily save the attributes of an image. Interacts with the corresponding controller
  * @param int $imageID id of the image
  * @param string $filename the file name of the image
  * @param string $category the category the image is assigned to

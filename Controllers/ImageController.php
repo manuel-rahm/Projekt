@@ -5,7 +5,7 @@ namespace JvJ\Controllers;
 include('./Models/Image.php');
 
 /**
- * Class for handling images. Interacts with the corresponding model.
+ * Class for handling images. Interacts with the corresponding model
  * 
  */
 
