@@ -156,26 +156,6 @@ Search.appendIndex(
             "summary": "Delete\u0020selected\u0020video\u0020in\u0020database\u0020and\u0020unlink\u0020it",
             "url": "classes/JvJ-Controllers-VideoController.html#method_deleteVideo"
         },                {
-            "fqsen": "\\USER",
-            "name": "USER",
-            "summary": "",
-            "url": "namespaces/default.html#constant_USER"
-        },                {
-            "fqsen": "\\PASSWORD",
-            "name": "PASSWORD",
-            "summary": "",
-            "url": "namespaces/default.html#constant_PASSWORD"
-        },                {
-            "fqsen": "\\HOST",
-            "name": "HOST",
-            "summary": "",
-            "url": "namespaces/default.html#constant_HOST"
-        },                {
-            "fqsen": "\\DATABASE",
-            "name": "DATABASE",
-            "summary": "",
-            "url": "namespaces/default.html#constant_DATABASE"
-        },                {
             "fqsen": "\\JvJ\\Models\\Image",
             "name": "Image",
             "summary": "Class\u0020for\u0020images,\u0020used\u0020to\u0020temporarily\u0020save\u0020the\u0020attributes\u0020of\u0020an\u0020image.\u0020Interacts\u0020with\u0020the\u0020corresponding\u0020controller",
@@ -1990,21 +1970,6 @@ Search.appendIndex(
             "name": "last_reply",
             "summary": "The\u0020most\u0020recent\u0020reply\u0020received\u0020from\u0020the\u0020server.",
             "url": "classes/PHPMailer-PHPMailer-SMTP.html#property_last_reply"
-        },                {
-            "fqsen": "\\MAILUSER",
-            "name": "MAILUSER",
-            "summary": "",
-            "url": "namespaces/default.html#constant_MAILUSER"
-        },                {
-            "fqsen": "\\MAILHOST",
-            "name": "MAILHOST",
-            "summary": "",
-            "url": "namespaces/default.html#constant_MAILHOST"
-        },                {
-            "fqsen": "\\MAILPW",
-            "name": "MAILPW",
-            "summary": "",
-            "url": "namespaces/default.html#constant_MAILPW"
         },                {
             "fqsen": "\\",
             "name": "\\",
